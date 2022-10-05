@@ -4,6 +4,26 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+
+  <!-- Data Access Layer dependency packages -->
+
+  <!-- For adding Automapper as service -->
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SQLServer" Version="5.0.2" />
+
+  <!--  Controller Mapping Model Objects to DTO's and API Request data to Model Object -->
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+
+  </ItemGroup>
+
 
 </Project>
  

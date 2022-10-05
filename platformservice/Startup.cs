@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using platformservice.Data;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace platformservice
 {
@@ -25,6 +28,10 @@ namespace platformservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemoryDb"));
+            services.AddScoped<IPlatformRepo, PlatformRepo>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllers();
         }
 
@@ -46,6 +53,8 @@ namespace platformservice
             {
                 endpoints.MapControllers();
             });
+
+            InitDbValues.PopulateData(app);
         }
     }
 }
